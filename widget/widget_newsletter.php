@@ -36,28 +36,31 @@ public function widget( $args, $instance ) {
   echo $args['before_widget'];
 
 
+  // Filter tag class
+  $tag_title = "p";
+  $tag_title = apply_filters('abml_tag_class', $tag_title);
+
+
+  // Filter title class
+  $title_class = "txtS";
+  $title_class = apply_filters('abml_title_class', $title_class);
+
+
 
   if ( ! empty( $instance['title'] ) ) {
     $title = $instance['title'];
-    echo  "<h4'>$title</h4>";
+    echo  "<$tag_title class='$title_class'>$title</$tag_title>";
   }
 
 
   if ( ! empty( $instance['desc'] ) ) {
     $desc = $instance['desc'];
-    echo  "<p'>$desc</p>";
+    echo  "<p>$desc</p>";
   }
 
-  echo "
 
-  <form action='#' role='form' class='newsletter-form' novalidate='novalidate'>
+  include_once(ABML.'templates/form_newsletter.php');
 
-  <input name='email' type='text' placeholder='Entrez votre email'>
-
-  <button id='newsletter-form-btn' class='btn'> S'inscrire </button>
-
-  </form>
-  ";
 
 
   echo $args['after_widget'];

@@ -9,6 +9,15 @@
 
 
 /**
+*
+* Définition des constantes
+*
+*/
+// Chemin absolue vers le plugins
+define( 'ABML', plugin_dir_path( __FILE__ ) );
+
+
+/**
 *  Installation des tables
 */
 require ('class/AbListEmailInstall.php');
@@ -62,3 +71,8 @@ require 'ajax/form_newsletter.php';
 * Chargement du script js
 */
 require 'register/scripts.php';
+
+/**
+*  register shortcode
+*/
+require 'register/sc_newsletter.php';
