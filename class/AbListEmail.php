@@ -28,6 +28,7 @@ class AbListEmail{
 
     if($this->is_valid_email($email) && $this->is_new_email($email)){
       $this->record_email($email);
+      do_action( 'abml_after_email_record', $email);
       return array('status' => "success");
     }elseif(!$this->is_new_email($email)){
       return array('status' => "error", 'error_message' => "Vous êtes déja inscrit");
@@ -86,6 +87,18 @@ class AbListEmail{
     global $wpdb;
     $result = $wpdb->get_results( "SELECT * FROM $this->table");
     return $result;
+  }
+
+
+  /**
+  * [Supprime toute les adresse email]
+  * @return array
+  */
+  public function delete_all(){
+
+    global $wpdb;
+    $wpdb->query("DELETE FROM $this->table");
+
   }
 
 
