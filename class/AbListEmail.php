@@ -43,13 +43,12 @@ class AbListEmail{
   * @return boolean
   */
   public function is_new_email($email){
+    
     global $wpdb;
     $result = $wpdb->get_results( "SELECT * FROM $this->table WHERE email = '".$email."' ");
-    if(!empty($result)){
-      return false;
-    }else{
-      return true;
-    }
+   
+    return (!empty($result)) ? false : true; 
+
   }
 
 
@@ -85,8 +84,7 @@ class AbListEmail{
   */
   public function get_all_email(){
     global $wpdb;
-    $result = $wpdb->get_results( "SELECT * FROM $this->table");
-    return $result;
+    return $wpdb->get_results( "SELECT * FROM $this->table");
   }
 
 
